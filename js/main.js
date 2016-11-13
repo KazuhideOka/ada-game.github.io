@@ -21,7 +21,10 @@ function load(){
     }
     
     for(var i=0;i<floor_num;i++){
-        floor[i] = new Floor("select_back_01",width/2,100*i);
+        floor[i] = new Array(floor_num);
+        for(var j=0;j<floor_num;j++){
+            floor[i][j] = new Floor("select_back_01",300*i,100*j);
+        }
     }
 
     
@@ -32,7 +35,9 @@ function move(){
 
     
     for(var i=0;i<floor_num;i++){
-        floor[i].move();
+        for(var j=0;j<floor_num;j++){
+            floor[i][j].move();
+        }
     }
     
     for(var i=0;i<obj_num;i++){
@@ -49,7 +54,9 @@ function draw() {
     drawText("Now Loading...",200,1920/2,64,255,255,255,255);
     
     for(var i=0;i<floor_num;i++){
-        floor[i].draw();
+        for(var j=0;j<floor_num;j++){
+            floor[i][j].draw();
+        }
     }
     for(var i=0;i<obj_num;i++){
         obj[i].draw();

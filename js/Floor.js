@@ -3,7 +3,7 @@ class Floor{
         this.img = creatImage(img);
         this.x = x;
         this.y = y;
-        this.w = 1920;
+        this.w = 300;
         this.h = 300;
         this.r = 0;
         this.rate = 0;
