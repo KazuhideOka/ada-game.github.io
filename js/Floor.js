@@ -1,6 +1,8 @@
+var Floor_img_green = creatImage("select_back_01");
+
 class Floor{
     constructor(img,x,y) {
-        this.img = creatImage(img);
+        this.img = img;
         this.x = x;
         this.y = y;
         this.w = 300;
@@ -10,21 +12,17 @@ class Floor{
     }
     
     move(){
-        if(touching){
-            if(touch_y<height/2){
-                this.y--;
-            }else{
-                this.y++;
-            }
-        }
-        if(this.y>200){
-            this.rate = (this.y-200)/(500.0);
+        this.screen_x = this.x + center_x - player.x;
+        this.screen_y = this.y + center_y - player.y;
+        
+        if(this.screen_y>200){
+            this.rate = (this.screen_y-200)/(500.0);
         }
     }
     
     draw(){
-        if(this.y>200 && this.h*this.rate < height){
-            drawImage(this.img, this.x, ((this.y - this.h/2)*this.rate)+200, this.w, this.h*this.rate, this.r, 255);
+        if(this.screen_y>200 && this.h*this.rate < height){
+            drawImage(this.img, this.screen_x, ((this.screen_y - this.h/2)*this.rate)+200, this.w, this.h*this.rate, this.r, 255);
         }
     }
 }

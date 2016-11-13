@@ -1,4 +1,5 @@
 var state;
+var player;
 var obj_num = 10;
 var obj = new Array(obj_num);
 var floor_num = 100;
@@ -12,8 +13,11 @@ function load(){
     width = 1920;
     height = 1080;
     scroll = true;
+    sizing();
 
     state = "opening";
+    
+    player = new Player();
     
     for(var i=0;i<obj_num;i++){
         obj[i] = new Obj("man01",Math.floor(Math.random()*1920),500/*Math.floor(Math.random()*3000)*/,200,Math.floor(Math.random()*1000));
@@ -23,7 +27,7 @@ function load(){
     for(var i=0;i<floor_num;i++){
         floor[i] = new Array(floor_num);
         for(var j=0;j<floor_num;j++){
-            floor[i][j] = new Floor("select_back_01",300*i,100*j);
+            floor[i][j] = new Floor(Floor_img_green,300*i,100*j);
         }
     }
 
@@ -33,6 +37,7 @@ function load(){
 //------------------------------------------------------------------------------
 function move(){
 
+    player.move();
     
     for(var i=0;i<floor_num;i++){
         for(var j=0;j<floor_num;j++){
@@ -58,8 +63,16 @@ function draw() {
             floor[i][j].draw();
         }
     }
+    
     for(var i=0;i<obj_num;i++){
-        obj[i].draw();
+        obj[i].drawBack();
+    }
+    
+    player.draw();
+    
+    
+    for(var i=0;i<obj_num;i++){
+        obj[i].drawFore();
     }
 
     
