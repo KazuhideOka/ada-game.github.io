@@ -9,8 +9,8 @@ class Player{
         this.w = 200;
         this.h = 200;
         this.r = 0;
-        this.x_speed = 3;
-        this.y_speed = 2;
+        this.x_speed = 6;
+        this.y_speed = 3;
         
         center_x = width/2;
         center_y = (height*2)/3;
@@ -18,15 +18,17 @@ class Player{
     
     move(){
         if(touching){
-            if(touch_x<300){
+            if(touch_x<500){
                 this.x-=this.x_speed;
-            }else if(touch_x>width-300){
+            }else if(touch_x>width-500){
                 this.x+=this.x_speed;
             }else if(touch_y<height/2){
                 this.y-=this.y_speed;
             }else{
                 this.y+=this.y_speed;
             }
+            if(this.x<0) this.x=0;
+            if(this.y<0) this.y=0;
             this.r = 5 * Math.sin(2 * Math.PI * (timer%500)/500.0);
         }else{
             this.r = 0;
