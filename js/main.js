@@ -28,12 +28,14 @@ function load(){
         }
     }
 
-    
 	loop();
 }
 //------------------------------------------------------------------------------
 function move(){
-
+    ctx.msImageSmoothingEnabled = false;
+    ctx.mozImageSmoothingEnabled = false;
+    ctx.imageSmoothingEnabled = false;
+    
     player.move();
     
     var map_x = Math.floor(player.x/Map_w);

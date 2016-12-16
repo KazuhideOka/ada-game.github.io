@@ -22,7 +22,7 @@ function loop() {
 	draw();
     var now_t = new Date();
 	loop_timer = 16 - (now_t - loop_timer);
-    ctx.fillText("fps : " + 1000/loop_timer,50,500);
+    ctx.fillText("fps : " + 60*loop_timer/16,50,500);
 	if(loop_timer<0) loop_timer=0;
 	setTimeout("loop()", loop_timer);
 }
