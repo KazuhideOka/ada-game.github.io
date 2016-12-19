@@ -1,6 +1,8 @@
 class Obj{
-    constructor(img,x,y,w,h) {
-        this.img = creatImage(img);
+    constructor(img,x,y,w,h,img_or_vec) {
+        this.is_img = img_or_vec;
+        if(this.is_img) this.img = creatImage(img);
+        else this.img = new DotImage(img);
         this.x = x;
         this.y = y;
         this.w = w;
@@ -45,7 +47,11 @@ class Obj{
     
     
     drawOnFloor(img, x, y, w, h, r, a){
-        drawImage(img, x, y-h/2, w, h, r, a);
+        if(this.is_img){
+            drawImage(img, x, y-h/2, w, h, r, a);
+        }else{
+            img.draw(x, y-h/2, w, h, a)
+        }
         //drawCircle(this.screen_x,this.screen_y*this.y_rate+200,10,0,255,0,255);
     }
 }

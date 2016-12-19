@@ -64,7 +64,7 @@ function drawLine(x1,y1,x2,y2,r,g,b,a){
 //------------------------------------------------------------------------------
 function drawRect(x,y,w,h,r,g,b,a){
 	//ctx.globalCompositeOperation="lighter";
-	ctx.fillStyle ='rgba('+r+','+g+','+b+','+a+')';
+	ctx.fillStyle ='rgba('+r+','+g+','+b+','+a/255.0+')';
 	ctx.fillRect((x-w/2)*dw, (y-h/2)*dh, w*dw, h*dh);
 }
 //------------------------------------------------------------------------------

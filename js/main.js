@@ -17,8 +17,59 @@ function load(){
     
     player = new Player();
     
+    
+    
+    var pix_img = new Array(16);
+    for(var i=0;i<pix_img.length;i++){
+        pix_img[i] = new Array(16);
+        for(var j=0;j<pix_img[i].length;j++){
+            pix_img[i][j] = new Array(4);
+            pix_img[i][j][0] = 255;
+            pix_img[i][j][1] = 255;
+            pix_img[i][j][2] = 255;
+            pix_img[i][j][3] = 0;
+        }
+    }
+    
+    pix_img[6][15][0] = 100;
+    pix_img[6][15][1] = 50;
+    pix_img[6][15][2] = 50;
+    pix_img[6][15][3] = 255;
+    pix_img[7][15][0] = 100;
+    pix_img[7][15][1] = 50;
+    pix_img[7][15][2] = 50;
+    pix_img[7][15][3] = 255;
+    
+    var r_rate = 0.5;
+    var g_rate = 1.0;
+    var b_rate = 0.1;
+    
+    for(var j=pix_img[0].length-2;j>=0;j--){
+        for(var i=0;i<pix_img.length;i++){
+            if(pix_img[i][j+1][3]>0 && Math.floor(Math.random()*(16-j)/1)==0){
+                pix_img[i][j][0] = pix_img[i][j+1][0] + Math.floor((-25 + Math.floor(Math.random()*50)) * r_rate);
+                pix_img[i][j][1] = pix_img[i][j+1][1] + Math.floor((-25 + Math.floor(Math.random()*50)) * g_rate);
+                pix_img[i][j][2] = pix_img[i][j+1][2] + Math.floor((-25 + Math.floor(Math.random()*50)) * b_rate);
+                pix_img[i][j][3] = 255;
+            }
+            else if(i<pix_img.length-1 && pix_img[i+1][j+1][3]>0 && Math.floor(Math.random()*(16-j)/3)==0){
+                pix_img[i][j][0] = pix_img[i+1][j+1][0] + Math.floor((-25 + Math.floor(Math.random()*50)) * r_rate);
+                pix_img[i][j][1] = pix_img[i+1][j+1][1] + Math.floor((-25 + Math.floor(Math.random()*50)) * g_rate);
+                pix_img[i][j][2] = pix_img[i+1][j+1][2] + Math.floor((-25 + Math.floor(Math.random()*50)) * b_rate);
+                pix_img[i][j][3] = 255;
+            }
+            else if(i>0 && pix_img[i-1][j+1][3]>0 && Math.floor(Math.random()*(16-j)/3)==0){
+                pix_img[i][j][0] = pix_img[i-1][j+1][0] + Math.floor((-25 + Math.floor(Math.random()*50)) * r_rate);
+                pix_img[i][j][1] = pix_img[i-1][j+1][1] + Math.floor((-25 + Math.floor(Math.random()*50)) * g_rate);
+                pix_img[i][j][2] = pix_img[i-1][j+1][2] + Math.floor((-25 + Math.floor(Math.random()*50)) * b_rate);
+                pix_img[i][j][3] = 255;
+            }
+        }
+    }
+    
+    
     for(var i=0;i<obj.length;i++){
-        obj[i] = new Obj("man01",Math.floor(Math.random()*1920),500/*Math.floor(Math.random()*3000)*/,200,Math.floor(Math.random()*1000));
+        obj[i] = new Obj(pix_img,Math.floor(Math.random()*1000),Math.floor(Math.random()*600),300,Math.floor(Math.random()*1000),false);
     }
     
     for(var i=0;i<map.length;i++){
