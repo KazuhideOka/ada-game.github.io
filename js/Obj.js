@@ -48,7 +48,7 @@ class Obj{
     
     drawOnFloor(img, x, y, w, h, r, a){
         if(this.is_img){
-            drawImage(img, x, y-h/2, w, h, r, a);
+            drawImage(this.img, x, y-h/2, w, h, r, a);
         }else{
             img.draw(x, y-h/2, w, h, a)
         }

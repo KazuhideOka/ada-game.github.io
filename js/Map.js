@@ -58,6 +58,22 @@ class Map{
             }
         }
         
+        
+        var c = document.getElementById("canvas");
+        c.width = 16;
+        c.height = 16;
+        ctx.putImageData(image_data,0,0,0,0,16,16);
+        localStorage.setItem("dot_image0",canvas.toDataURL());
+        
+        var image_bitmap = new Image();
+        image_bitmap.src = localStorage.getItem("dot_image0");
+        
+        for(var i=0;i<32;i++){
+            this.obj[i] = new Obj(image_bitmap,this.x*Map_w+rand(Map_w),this.y*Map_h+rand(Map_h),400,Math.floor(Math.random()*1000),true);
+        }
+        
+        
+        /*
         var x = this.x;
         var y = this.y;
         var image_bitmap = window.createImageBitmap(image_data);
@@ -72,11 +88,6 @@ class Map{
                           }
                           
         );
-        
-        /*
-        for(var i=0;i<32;i++){
-            this.obj[i] = new Obj(image_bitmap,this.x*Map_w+rand(Map_w),this.y*Map_h+rand(Map_h),400,Math.floor(Math.random()*1000),true);
-        }
         */
         
     }

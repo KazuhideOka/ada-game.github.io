@@ -51,6 +51,16 @@ function drawImage(img,x,y,w,h,r,a){
     ctx.restore();
 }
 //------------------------------------------------------------------------------
+function drawImageData(img,x,y,w,h,r,a){
+    ctx.save();
+    ctx.globalAlpha = a/255.0;
+    ctx.translate(x*dw,y*dh);
+    ctx.rotate(r * Math.PI / 180);
+    ctx.scale (10,10);
+    ctx.putImageData(img,(x-w/2)*dw,(y-h/2)*dh,0,0,16,16);
+    ctx.restore();
+}
+//------------------------------------------------------------------------------
 function drawText(text,x,y,size,r,g,b,a){
     setFontSize(size);
     ctx.fillStyle ='rgba('+r+','+g+','+b+','+a+')';
