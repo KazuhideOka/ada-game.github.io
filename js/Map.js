@@ -35,10 +35,6 @@ class Map{
         var g_rate = 1.0;
         var b_rate = 0.1;
         
-        r_rate=0.0;
-        g_rate=0.0;
-        b_rate=0.0;
-        
         for(var j=16-2;j>=0;j--){
             for(var i=0;i<16;i++){
                 if(pix_img[pix16(i,j+1,3)]>0 && Math.floor(Math.random()*(16-j)/1)==0){
