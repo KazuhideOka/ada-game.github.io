@@ -68,8 +68,6 @@ function draw() {
     
     player.draw();
     
-    console.log(player.x);
-    
     for(var i=map_x-1;i<map_x+2;i++){
         for(var j=map_y-10;j<map_y+2;j++){
             if(i>=0 && j>=0 && i<30 && j<30) map[i][j].drawObjFore();
