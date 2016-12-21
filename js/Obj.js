@@ -1,8 +1,8 @@
 class Obj{
     constructor(img,x,y,w,h,img_or_vec) {
         this.is_img = img_or_vec;
-        if(this.is_img) this.img = creatImage(img);
-        else this.img = new DotImage(img);
+        if(this.is_img) this.img = img;
+        else this.img = new DotImage16(img);
         this.x = x;
         this.y = y;
         this.w = w;

@@ -27,6 +27,10 @@ function loop() {
 	setTimeout("loop()", loop_timer);
 }
 //------------------------------------------------------------------------------
+function rand(n){
+    return Math.floor(Math.random()*n);
+}
+//------------------------------------------------------------------------------
 function creatImage(file_name){
     var img = new Image();
     img.src = "resources/" + file_name + ".png?" + timer;

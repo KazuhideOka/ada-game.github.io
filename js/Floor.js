@@ -25,4 +25,5 @@ class Floor{
             drawImage(this.img, this.screen_x, ((this.screen_y - this.h/2)*this.rate)+200, this.w, this.h*this.rate, this.r, 255);
         }
     }
+
 }

@@ -1,6 +1,5 @@
 var state;
 var player;
-var obj = new Array(10);
 var map = new Array(30);
 //------------------------------------------------------------------------------
 function load(){
@@ -16,61 +15,7 @@ function load(){
     state = "opening";
     
     player = new Player();
-    
-    
-    
-    var pix_img = new Array(16);
-    for(var i=0;i<pix_img.length;i++){
-        pix_img[i] = new Array(16);
-        for(var j=0;j<pix_img[i].length;j++){
-            pix_img[i][j] = new Array(4);
-            pix_img[i][j][0] = 255;
-            pix_img[i][j][1] = 255;
-            pix_img[i][j][2] = 255;
-            pix_img[i][j][3] = 0;
-        }
-    }
-    
-    pix_img[6][15][0] = 100;
-    pix_img[6][15][1] = 50;
-    pix_img[6][15][2] = 50;
-    pix_img[6][15][3] = 255;
-    pix_img[7][15][0] = 100;
-    pix_img[7][15][1] = 50;
-    pix_img[7][15][2] = 50;
-    pix_img[7][15][3] = 255;
-    
-    var r_rate = 0.5;
-    var g_rate = 1.0;
-    var b_rate = 0.1;
-    
-    for(var j=pix_img[0].length-2;j>=0;j--){
-        for(var i=0;i<pix_img.length;i++){
-            if(pix_img[i][j+1][3]>0 && Math.floor(Math.random()*(16-j)/1)==0){
-                pix_img[i][j][0] = pix_img[i][j+1][0] + Math.floor((-25 + Math.floor(Math.random()*50)) * r_rate);
-                pix_img[i][j][1] = pix_img[i][j+1][1] + Math.floor((-25 + Math.floor(Math.random()*50)) * g_rate);
-                pix_img[i][j][2] = pix_img[i][j+1][2] + Math.floor((-25 + Math.floor(Math.random()*50)) * b_rate);
-                pix_img[i][j][3] = 255;
-            }
-            else if(i<pix_img.length-1 && pix_img[i+1][j+1][3]>0 && Math.floor(Math.random()*(16-j)/3)==0){
-                pix_img[i][j][0] = pix_img[i+1][j+1][0] + Math.floor((-25 + Math.floor(Math.random()*50)) * r_rate);
-                pix_img[i][j][1] = pix_img[i+1][j+1][1] + Math.floor((-25 + Math.floor(Math.random()*50)) * g_rate);
-                pix_img[i][j][2] = pix_img[i+1][j+1][2] + Math.floor((-25 + Math.floor(Math.random()*50)) * b_rate);
-                pix_img[i][j][3] = 255;
-            }
-            else if(i>0 && pix_img[i-1][j+1][3]>0 && Math.floor(Math.random()*(16-j)/3)==0){
-                pix_img[i][j][0] = pix_img[i-1][j+1][0] + Math.floor((-25 + Math.floor(Math.random()*50)) * r_rate);
-                pix_img[i][j][1] = pix_img[i-1][j+1][1] + Math.floor((-25 + Math.floor(Math.random()*50)) * g_rate);
-                pix_img[i][j][2] = pix_img[i-1][j+1][2] + Math.floor((-25 + Math.floor(Math.random()*50)) * b_rate);
-                pix_img[i][j][3] = 255;
-            }
-        }
-    }
-    
-    
-    for(var i=0;i<obj.length;i++){
-        obj[i] = new Obj(pix_img,Math.floor(Math.random()*1000),Math.floor(Math.random()*600),300,Math.floor(Math.random()*1000),false);
-    }
+
     
     for(var i=0;i<map.length;i++){
         map[i] = new Array(map.length);
@@ -99,10 +44,6 @@ function move(){
         }
     }
     
-    for(var i=0;i<obj.length;i++){
-        obj[i].move();
-    }
-    
 
     
 }
@@ -116,22 +57,26 @@ function draw() {
     var map_y = Math.floor(player.y/Map_h);
     if(map_x<1) map_x=1;
     if(map_y<1) map_y=1;
+    
     for(var i=map_x-1;i<map_x+2;i++){
         for(var j=map_y-1;j<map_y+2;j++){
-            map[i][j].draw();
+            map[i][j].drawFloor();
         }
     }
-    
-    
-    for(var i=0;i<obj.length;i++){
-        obj[i].drawBack();
+
+    for(var i=map_x-1;i<map_x+2;i++){
+        for(var j=map_y-1;j<map_y+2;j++){
+            map[i][j].drawObjBack();
+        }
     }
     
     player.draw();
     
     
-    for(var i=0;i<obj.length;i++){
-        obj[i].drawFore();
+    for(var i=map_x-1;i<map_x+2;i++){
+        for(var j=map_y-1;j<map_y+2;j++){
+            map[i][j].drawObjFore();
+        }
     }
 
     
