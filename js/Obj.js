@@ -23,7 +23,7 @@ class Obj{
         this.y_rate = (this.screen_y-200)/(500.0);
         if(this.y_rate < 0) this.y_rate = 0;
         
-        this.h_rate = 1000 * (this.screen_y)/(5000.0);
+        this.h_rate = 1000 * (this.screen_y)/(2000.0);
         
         this.a_rate = (this.h+this.h_rate)/this.h;
 
@@ -31,7 +31,7 @@ class Obj{
     
     drawBack(){
         if(this.screen_y*this.y_rate+200 < center_y){
-            if(this.a_rate>0 && this.h*this.y_rate < height){
+            if(this.a_rate>0 && (this.h*this.y_rate)-(this.h+this.h_rate)/2 < height){
                 this.drawOnFloor(this.img, this.screen_x, this.screen_y*this.y_rate+200, this.w, (this.h+this.h_rate)/2, this.r, 255*this.a_rate);
             }
         }
@@ -39,7 +39,7 @@ class Obj{
     
     drawFore(){
         if(this.screen_y*this.y_rate+200 >= center_y){
-            if(this.a_rate>0 && this.h*this.y_rate < height){
+            if(this.a_rate>0 && (this.h*this.y_rate)-(this.h+this.h_rate)/2 < height){
                 this.drawOnFloor(this.img, this.screen_x, this.screen_y*this.y_rate+200, this.w, (this.h+this.h_rate)/2, this.r, 255*this.a_rate);
             }
         }

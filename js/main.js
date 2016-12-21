@@ -36,11 +36,9 @@ function move(){
     
     var map_x = Math.floor(player.x/Map_w);
     var map_y = Math.floor(player.y/Map_h);
-    if(map_x<1) map_x=1;
-    if(map_y<1) map_y=1;
     for(var i=map_x-1;i<map_x+2;i++){
-        for(var j=map_y-1;j<map_y+2;j++){
-            map[i][j].move();
+        for(var j=map_y-10;j<map_y+2;j++){
+            if(i>=0 && j>=0 && i<30 && j<30) map[i][j].move();
         }
     }
     
@@ -55,27 +53,26 @@ function draw() {
     
     var map_x = Math.floor(player.x/Map_w);
     var map_y = Math.floor(player.y/Map_h);
-    if(map_x<1) map_x=1;
-    if(map_y<1) map_y=1;
     
     for(var i=map_x-1;i<map_x+2;i++){
-        for(var j=map_y-1;j<map_y+2;j++){
-            map[i][j].drawFloor();
+        for(var j=map_y-10;j<map_y+2;j++){
+            if(i>=0 && j>=0 && i<30 && j<30) map[i][j].drawFloor();
         }
     }
 
     for(var i=map_x-1;i<map_x+2;i++){
-        for(var j=map_y-1;j<map_y+2;j++){
-            map[i][j].drawObjBack();
+        for(var j=map_y-10;j<map_y+2;j++){
+            if(i>=0 && j>=0 && i<30 && j<30) map[i][j].drawObjBack();
         }
     }
     
     player.draw();
     
+    console.log(player.x);
     
     for(var i=map_x-1;i<map_x+2;i++){
-        for(var j=map_y-1;j<map_y+2;j++){
-            map[i][j].drawObjFore();
+        for(var j=map_y-10;j<map_y+2;j++){
+            if(i>=0 && j>=0 && i<30 && j<30) map[i][j].drawObjFore();
         }
     }
 

@@ -21,6 +21,21 @@ class DotImage16{
     }
 }
 
+function imageDataToImage(image_data){
+    var c = document.getElementById("canvas");
+    c.width = 16;
+    c.height = 16;
+    ctx.putImageData(image_data,0,0,0,0,16,16);
+    var img_url = canvas.toDataURL();
+    //localStorage.setItem("dot_image0",canvas.toDataURL());
+    
+    var image_bitmap = new Image();
+    image_bitmap.src = img_url;
+    //image_bitmap.src = localStorage.getItem("dot_image0");
+    
+    return image_bitmap;
+}
+
 function pix16(x,y,c){
     return x*4 + y*16*4 + c;
 }
