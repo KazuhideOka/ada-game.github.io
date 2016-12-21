@@ -7,8 +7,8 @@ class Player{
         this.img_2 = creatImage("man01_02");
         this.img_3 = creatImage("man01_03");
         this.img_4 = creatImage("man01_04");
-        this.x = 1000;
-        this.y = 100;
+        this.x = 5000;
+        this.y = 500;
         this.w = 200;
         this.h = 200;
         this.r = 0;
